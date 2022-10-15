@@ -21,6 +21,24 @@ The project is structured as follows:
   - `model.ts` - contains definition of user datatype
   - `router.ts` - contains backend user routes
   - `util.ts` contains user utility functions for transforming data returned to the client
+- `/tag` contains files related to tags concept
+  - `collection.ts` contains tag collection class to wrap around MongoDB database
+  - `middleware.ts` contains tag middleware
+  - `model.ts` contains definition of tag datatype
+  - `router.ts` contains backend tag routes
+  - `util.ts` contains tag utility functions for transforming data returned to the client
+- `/reaction` contains files related to reaction concept
+  - `collection.ts` contains reaction collection class to wrap around MongoDB database
+  - `middleware.ts` contains reaction middleware
+  - `model.ts` - contains definition of reaction datatype
+  - `router.ts` - contains backend reaction routes
+  - `util.ts` contains reaction utility functions for transforming data returned to the client
+- `/comment` contains files related to comment concept
+  - `collection.ts` contains comment collection class to wrap around MongoDB database
+  - `middleware.ts` contains comment middleware
+  - `model.ts` - contains definition of comment datatype
+  - `router.ts` - contains backend comment routes
+  - `util.ts` contains comment utility functions for transforming data returned to the client
 - `/public` contains the code for the frontend (HTML/CSS/browser JS)
 
 ## Installation
