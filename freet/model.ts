@@ -1,6 +1,7 @@
 import type {Types, PopulatedDoc, Document} from 'mongoose';
 import {Schema, model} from 'mongoose';
 import type {User} from '../user/model';
+import type {PopulatedReaction} from '../reaction/model';
 
 /**
  * This file defines the properties stored in a Freet
@@ -14,6 +15,7 @@ export type Freet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
+  reactions?: Array<Types.ObjectId>,
 };
 
 export type PopulatedFreet = {
@@ -22,6 +24,7 @@ export type PopulatedFreet = {
   dateCreated: Date;
   content: string;
   dateModified: Date;
+  reactions?: Array<PopulatedReaction>,
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
@@ -50,6 +53,17 @@ const FreetSchema = new Schema<Freet>({
     type: Date,
     required: true
   }
+},
+{
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true },
+}
+);
+
+FreetSchema.virtual('reactions', {
+  ref: 'Reaction',
+  localField: '_id',
+  foreignField: 'source',
 });
 
 const FreetModel = model<Freet>('Freet', FreetSchema);

@@ -1,6 +1,7 @@
 import type {HydratedDocument} from 'mongoose';
 import moment from 'moment';
 import type {Freet, PopulatedFreet} from '../freet/model';
+import type {ReactionType} from '../reaction/model';
 
 // Update this if you add a property to the Freet type!
 type FreetResponse = {
@@ -9,6 +10,11 @@ type FreetResponse = {
   dateCreated: string;
   content: string;
   dateModified: string;
+  reactions: {
+    _id: string,
+    type: ReactionType,
+    issuer: string
+  }[];
 };
 
 /**
@@ -33,13 +39,20 @@ const constructFreetResponse = (freet: HydratedDocument<Freet>): FreetResponse =
     })
   };
   const {username} = freetCopy.authorId;
+  const reactions = freetCopy.reactions || [];
   delete freetCopy.authorId;
+  delete freetCopy.reactions;
   return {
     ...freetCopy,
     _id: freetCopy._id.toString(),
     author: username,
     dateCreated: formatDate(freet.dateCreated),
-    dateModified: formatDate(freet.dateModified)
+    dateModified: formatDate(freet.dateModified),
+    reactions: reactions.map((reaction) => ({
+      _id: reaction._id.toString(),
+      issuer: reaction.issuerId.username,
+      type: reaction.type
+    })),
   };
 };
 

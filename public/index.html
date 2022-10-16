@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="/scripts/freet.js"></script>
   <script src="/scripts/user.js"></script>
+  <script src="/scripts/reaction.js"></script>
   <script src="/scripts/index.js"></script>
 </head>
 
@@ -116,6 +117,64 @@
             <input id="id" name="id">
           </div>
           <input type="submit" value="Delete Freet">
+        </form>
+
+        <form id="view-all-reactions">
+          <h3>View All Reactions</h3>
+          <input type="submit" value="View All">
+        </form>
+
+        <form id="view-reactions-by-freet">
+          <h3>View Reactions By Freet</h3>
+          <div>
+            <label for="freetId">ID:</label>
+            <input id="freetId" name="freetId">
+          </div>
+          <input type="submit" value="View Reactions">
+        </form>
+
+        <form id="add-reaction">
+          <h3>Set Reaction</h3>
+          <div>
+            <label for="freetId">Freet ID:</label>
+            <input id="freetId" name="freetId">
+
+            <div>
+              <input type="radio" id="love-react"
+                name="type" value="LOVE">
+              <label for="love-react">Love</label>
+       
+              <input type="radio" id="haha-react"
+                name="type" value="HAHA">
+              <label for="haha-react">Haha</label>
+       
+              <input type="radio" id="sad-react"
+                name="type" value="SAD">
+              <label for="sad-react">Sad</label>
+        
+              <input type="radio" id="angry-react"
+                name="type" value="ANGRY">
+              <label for="angry-react">Angry</label>
+        
+              <input type="radio" id="like-react"
+                name="type" value="LIKE">
+              <label for="like-react">Like</label>
+        
+              <input type="radio" id="dislike-react"
+                name="type" value="DISLIKE">
+              <label for="dislike-react">Dislike</label>
+            </div>
+          </div>
+          <input type="submit" value="Set Reaction">
+        </form>
+
+        <form id="remove-reaction">
+          <h3>Remove Reaction</h3>
+          <div>
+            <label for="reactionId">Reaction ID:</label>
+            <input id="reactionId" name="reactionId">
+          </div>
+          <input type="submit" value="Remove">
         </form>
       </div>
     </section>
