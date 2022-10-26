@@ -14,6 +14,7 @@ import {freetRouter} from '../freet/router';
 import {reactionRouter} from '../reaction/router';
 import {commentRouter} from '../comment/router';
 import {tagRouter} from '../tag/router';
+import {blockRouter} from '../block/router';
 
 // Load environmental variables
 dotenv.config({});
@@ -82,6 +83,7 @@ app.use('/api/freets', freetRouter);
 app.use('/api/reactions', reactionRouter);
 app.use('/api/comments', commentRouter);
 app.use('/api/tags', tagRouter);
+app.use('/api/blocks', blockRouter);
 
 // Catch all the other routes and display error message
 app.all('*', (req: Request, res: Response) => {

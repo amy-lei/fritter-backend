@@ -10,6 +10,7 @@
   <script src="/scripts/reaction.js"></script>
   <script src="/scripts/comment.js"></script>
   <script src="/scripts/tag.js"></script>
+  <script src="/scripts/block.js"></script>
   <script src="/scripts/index.js"></script>
 </head>
 
@@ -301,6 +302,29 @@
             <input id="tagId" name="tagId"></input>
           </div>
           <input type="submit" value="Delete tag">
+        </form>
+
+        <form id="view-blocks">
+          <h3>View Blocks</h3>
+          <input type="submit" value="View">
+        </form>
+
+        <form id="add-block">
+          <h3>Block User</h3>
+          <div>
+            <label for="blockee">UserId:</label>
+            <input id="blockee" name="blockee"></input>
+          </div>
+          <input type="submit" value="Block">
+        </form>
+
+        <form id="delete-block">
+          <h3>Remove Block</h3>
+          <div>
+            <label for="blockId">BlockId:</label>
+            <input id="blockId" name="blockId"></input>
+          </div>
+          <input type="submit" value="Remove">
         </form>
 
       </div>

@@ -53,6 +53,9 @@ const formsAndHandlers = {
   'view-tags-by-freet': viewTagsByFreet,
   'add-tag': addTag,
   'delete-tag': deleteTag,
+  'view-blocks': viewBlocksByUser,
+  'add-block': blockUser,
+  'delete-block': unblock,
 };
 
 // Attach handlers to forms
