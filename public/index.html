@@ -8,6 +8,8 @@
   <script src="/scripts/freet.js"></script>
   <script src="/scripts/user.js"></script>
   <script src="/scripts/reaction.js"></script>
+  <script src="/scripts/comment.js"></script>
+  <script src="/scripts/tag.js"></script>
   <script src="/scripts/index.js"></script>
 </head>
 
@@ -176,6 +178,131 @@
           </div>
           <input type="submit" value="Remove">
         </form>
+
+        <form id="add-comment">
+          <h3>Comment on Freet</h3>
+          <div>
+            <label for="freetId">FreetId:</label>
+            <input id="freetId" name="freetId"></input>
+
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+  
+            <label for="visibility">Visibility</label>
+            <div>
+              <input type="radio" id="public"
+                name="visibility" value="public">
+              <label for="public">Public</label>
+  
+              <input type="radio" id="private"
+                name="visibility" value="private">
+              <label for="private">Private</label>
+            </div>
+          </div>
+          <input type="submit" value="Comment">
+        </form>
+
+        <form id="reply-comment">
+          <h3>Reply to Comment</h3>
+          <div>
+            <label for="commentId">Comment Id:</label>
+            <input id="commentId" name="commentId"></input>
+  
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+          </div>
+          <input type="submit" value="Reply">
+        </form>
+
+        <form id="edit-comment">
+          <h3>Edit Comment</h3>
+          <div>
+            <label for="commentId">Comment Id:</label>
+            <input id="commentId" name="commentId"></input>
+  
+            <label for="content">Content:</label>
+            <textarea id="content" name="content"></textarea>
+          </div>
+          <input type="submit" value="Edit comment">
+        </form>
+
+        <form id="delete-comment">
+          <h3>Delete Comment</h3>
+          <div>
+            <label for="commentId">Comment Id:</label>
+            <input id="commentId" name="commentId"></input>
+          </div>
+          <input type="submit" value="Delete comment">
+        </form>
+
+        <form id="view-comments-by-source">
+          <h3>View All Freet Comments</h3>
+          <div>
+            <label for="freetId">FreetID:</label>
+            <input id="freetId" name="freetId"></input>
+          </div>
+          <input type="submit" value="View all comments">
+        </form>
+
+        <form id="view-comments-by-visibility">
+          <h3>View Freet Comments By Visibility</h3>
+          <div>
+            <label for="freetId">FreetID:</label>
+            <input id="freetId" name="freetId"></input>
+
+            <label for="visibility">Visibility</label>
+            <div>
+              <input type="radio" id="public"
+                name="visibility" value="public">
+              <label for="public">Public</label>
+  
+              <input type="radio" id="private"
+                name="visibility" value="private">
+              <label for="private">Private</label>
+            </div>
+          </div>
+          <input type="submit" value="View filtered comments">
+        </form>
+
+        <form id="view-tags-by-user">
+          <h3>View User Tags</h3>
+          <div>
+            <label for="userId">UserId:</label>
+            <input id="userId" name="userId"></input>
+          </div>
+          <input type="submit" value="View tags">
+        </form>
+
+        <form id="view-tags-by-freet">
+          <h3>View Freet Tags</h3>
+          <div>
+            <label for="freetId">FreetId:</label>
+            <input id="freetId" name="freetId"></input>
+          </div>
+          <input type="submit" value="View tags">
+        </form>
+
+        <form id="add-tag">
+          <h3>Add Tag</h3>
+          <div>
+            <label for="source">Source:</label>
+            <input id="source" name="source"></input>
+
+            <label for="label">Label:</label>
+            <input id="label" name="label"></input>
+          </div>
+          <input type="submit" value="Add tag">
+        </form>
+
+        <form id="delete-tag">
+          <h3>Delete Tag</h3>
+          <div>
+            <label for="tagId">TagId:</label>
+            <input id="tagId" name="tagId"></input>
+          </div>
+          <input type="submit" value="Delete tag">
+        </form>
+
       </div>
     </section>
     <section>

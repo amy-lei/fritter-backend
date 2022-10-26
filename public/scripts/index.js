@@ -43,6 +43,16 @@ const formsAndHandlers = {
   'view-reactions-by-freet': viewReactionsByFreet,
   'add-reaction': addReaction,
   'remove-reaction': deleteReaction,
+  'add-comment': addComment,
+  'reply-comment': replyComment,
+  'delete-comment': deleteComment,
+  'edit-comment': editComment,
+  'view-comments-by-source': viewCommentsBySource,
+  'view-comments-by-visibility': viewCommentsByVisibility,
+  'view-tags-by-user': viewTagsByUser,
+  'view-tags-by-freet': viewTagsByFreet,
+  'add-tag': addTag,
+  'delete-tag': deleteTag,
 };
 
 // Attach handlers to forms
