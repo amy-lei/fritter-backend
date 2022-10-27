@@ -311,3 +311,227 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
+
+#### `GET /api/tags?source=id` - Get tags associated with source
+
+**Returns**
+
+- An array of tags describing item with id `source`
+
+**Throws**
+
+- `400` if `source` is not given
+- `404` if `source` is not a recognized freet or user
+
+#### `POST /api/tags` - Create a new tag
+
+**Body**
+
+- `source` _{string}_ - The id of the item being tagged
+- `label` _{string}_ - The text associated with the tag
+
+**Returns**
+
+- A success message
+- A object with the created tag
+
+**Throws**
+
+- `403` if the user is not logged in or tries to add a tag to a profile/freet that is not theirs
+- `400` If `label` is empty or a stream of empty spaces or contains non-alphanumeric characters
+- `413` If `label` is more than 25 characters long
+- `404` If `source` is not a recognized freet or user
+
+
+#### `DELETE /api/tags/:tagId?` - Delete an existing tag
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the author of the tag
+- `404` if the tagId is invalid
+
+#### `GET /api/reactions` - Get all reactions
+
+**Returns**
+
+- An array of reactions
+
+#### `GET /api/reactions?freetId=id` - Get all reactions for freet
+
+**Returns**
+
+- An array of reactions made in response to the freet with id `freetId`
+
+**Throws**
+
+- `400` if `freetId` is not given
+- `404` if `freetId` is not a recognized freet
+
+#### `PUT /api/reactions` - Adds a reaction to the freet
+
+**Body**
+
+- `type` _{string}_ - The type of reaction
+- `freetId` _{string}_ - The id of the freet being reacted to
+
+**Returns**
+
+- A success message
+- A object with the reaction
+    - If the user already issued a reaction on the given freet, updates the type with the `type`
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` If `freetId` or `type` were not specified
+- `400` If `type` is not a supported reaction type
+- `404` If `freetId` is not a recognized freet
+
+
+#### `DELETE /api/reactions/:reactionId?` - Delete an existing reaction
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the issuer of the reaction
+- `404` if the reactionId is invalid
+
+#### `GET /api/comments?freetId=id&visibility=type` - Get comments under freet
+
+**Returns**
+
+- An array of comments under the freet.
+- If specified, filters to only comments with visibiility `visibility`. 
+    - Users who authored the freet can see any private comment
+    - Other users can only see private comment threads started by them
+
+**Throws**
+- `400` if `freetId` is not given
+- `400` if `visibility` was provided but does not take on values `{private, public}`
+- `404` if `freetId` is not a recognized freet
+
+
+#### `POST /api/comments` - Create a new comment in response to a freet
+
+**Body**
+
+- `content` _{string}_ - The content of the comment
+- `freetId` _{string}_ - The id of the freet being engaged with
+- `visibility` _{string}_ - Whether the comment is public or private
+
+**Returns**
+
+- A success message
+- A object with the created comment
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` If `freetId` or `visibility` were not specified
+- `404` If `freetId` is not a recognized freet
+- `400` if `visibility` does not take on values `{private, public}`
+- `400` If the comment content is empty or a stream of empty spaces
+- `413` If the comment content is more than 140 characters long
+
+
+#### `POST /api/comments/repliess` - Create a new comment as a reply to another comment
+
+**Body**
+
+- `content` _{string}_ - The content of the comment
+- `commentId` _{string}_ - The id of the comment being responded to
+
+**Returns**
+
+- A success message
+- A object with the created comment
+    - The comment takes on the visibility of the parent comment
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` If `commentId` was not specified
+- `404` If `commentId` is not a recognized freet
+- `400` If the comment content is empty or a stream of empty spaces
+- `413` If the comment content is more than 140 characters long
+
+#### `PUT /api/comments/:commentId?` - Updates a comment
+
+**Body**
+
+- `content` _{string}_ - The new content for the comment
+
+**Returns**
+
+- A success message
+- A object with the updated comment
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the author of the comment
+- `404` If `commentId` is not a recognized comment
+- `400` If the comment content is empty or a stream of empty spaces
+- `413` If the comment content is more than 140 characters long
+
+
+#### `DELETE /api/comments/:commentId?` - Delete an existing comment
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the author of the comment
+- `404` if the commentId is invalid
+
+#### `GET /api/blocks` - Get logged in user's blocks
+
+**Returns**
+
+- An array of blocks for the logged in user
+
+**Throws**
+- `403` if the user is not logged in
+
+#### `POST /api/blocks` - Create a new block
+
+**Body**
+
+- `blockee` _{string}_ - The id of the user being blocked
+
+**Returns**
+
+- A success message
+- A object with the created block
+
+**Throws**
+
+- `403` if the user is not logged in
+- `400` If `blockee` was not specified
+- `400` If `blockee` is the logged in user
+- `400` If `blockee` is already blocked
+- `404` If `blockee` is not a recognized user
+
+#### `DELETE /api/blocks/:blockId?` - Delete an existing block
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the logged in user is not the blocker
+- `404` if the blockId is invalid
