@@ -52,7 +52,7 @@ router.get(
  *
  * @param {string} content - The content of the freet
  * @param {string} freetId - The id of the freet being engaged with
- * @param {string} isPrivate - The visibility of the comment.
+ * @param {string} visibility - The visibility of the comment.
  * @return {CommentResponse} - The created comment
  * @throws {400} - If freetId was not provided
  * @throws {400} - If the comment content is empty or a stream of empty spaces
@@ -86,7 +86,7 @@ router.post(
  * @name POST /api/comments/replies
  *
  * @param {string} content - The content of the freet
- * @param {string} commentId - (Optional) The id of the comment being responded to
+ * @param {string} commentId - The id of the comment being responded to
  * @return {CommentResponse} - The created comment
  * @throws {400} - If the comment content is empty or a stream of empty spaces
  * @throws {403} - If the user is not logged in

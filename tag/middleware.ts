@@ -13,7 +13,7 @@ const isValidSource = (req: Request, res: Response, next: NextFunction) => {
   const validFormat = Types.ObjectId.isValid(source);
   if (!validFormat) {
     res.status(400).json({
-      error: 'Invalid source ID'
+      error: `'${source}' is an invalidly formatted source ID`
     });
     return;
   }
@@ -61,7 +61,7 @@ const isValidModifier = async (req: Request, res: Response, next: NextFunction) 
     return;
   }
   res.status(404).json({
-    error: 'Source being tagged could not be found'
+    error: `Source with id '${source}' could not be found`
   });
 } 
 
@@ -92,7 +92,7 @@ const isTagExist = async (req: Request, res: Response, next: NextFunction) => {
   const tag = validFormat ? await TagCollection.findOne(tagId) : undefined;
   if (!tag) {
     res.status(404).json({
-      error: 'Tag not found'
+      error: `Tag with ID '${tagId}' was not found`
     });
     return;
   }

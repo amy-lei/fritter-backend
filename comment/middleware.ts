@@ -13,9 +13,7 @@ const isValidVisibility = async (req: Request, res: Response, next: NextFunction
     visibility = visibility.toLowerCase();
     if (visibility !== 'private' && visibility !== 'public') {
         res.status(400).json({
-            error: {
-                freetNotFound: 'Visibility needs to be either public or private'
-            }
+            error: `Visibility needs to be 'public' or 'private'. Was provided ${visibility} instead`
         });
         return;
     }
@@ -42,7 +40,7 @@ const getIdData = (req: Request) => {
     const comment = isValid ? await CommentCollection.findOne(commentId) : undefined;
     if (!comment) {
       res.status(400).json({
-        error: 'Comment does not exist.'
+        error: `Comment with id '${commentId}' was not exist.`
       });
       return;
     }

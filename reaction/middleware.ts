@@ -11,9 +11,7 @@ const isReactionExists = async (req: Request, res: Response, next: NextFunction)
   const reaction = validFormat ? await ReactionCollection.findOne(req.params.reactionId) : '';
   if (!reaction) {
     res.status(404).json({
-      error: {
-        freetNotFound: `Reaction with ID ${req.params.reactionId} does not exist.`
-      }
+      error: `Reaction with ID ${req.params.reactionId} does not exist.`
     });
     return;
   }
@@ -35,7 +33,7 @@ const isValidReactionType = (req: Request, res: Response, next: NextFunction) =>
 
   if (!reactionTypes.includes(type as ReactionType)) {
     res.status(400).json({
-      error: 'Unsupport reaction type.'
+      error: `'${type}' is an unsupported reaction type.`
     });
     return;
   }

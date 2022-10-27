@@ -57,8 +57,8 @@ router.get(
  * @param {string} freetId - The id of the freet being reacted to
  * @return {FreetResponse} - The created freet
  * @throws {403} - If the user is not logged in
- * @throws {400} - If freetId or type were not specified
- * @throws {404} - If no freet has given freetId or if the type is not valid
+ * @throws {400} - If freetId or type were not specified. Or if the type is not supported
+ * @throws {404} - If no freet has given freetId
  */
 router.put(
   '/',
